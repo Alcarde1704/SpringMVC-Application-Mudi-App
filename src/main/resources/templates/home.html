@@ -12,22 +12,29 @@
   
   <div class="container">
 
-    <div th:each="pedido : ${pedidos}">
-      <div th:text="${pedido.nomeProduto}" class="">Nome do Produto</div>
-      <div>Valor: <span th:text="${pedido.valorNegociado}">200,99</span></div>
-      <div>Data da Entrega: <span th:text="${pedido.dataDaEntrega}">10/10/2022</span></div>
+    <div class="card" th:each="pedido : ${pedidos}">
 
-      <div>Produto</div>
-      <div><input class="form-control" th:value="${pedido.urlProduto}" value="url imagem"></div>
-
-      <div>Descrição</div>
-
-      <div>
-        <textarea class="form-control">descricao do pedido</textarea>
-      </div>
-
-      <div>
-        <img th:src="${pedido.urlImagem}" src="" alt="">
+      <div class="row">
+        <div class="col-6">
+          <div th:text="${pedido.nomeProduto}" class="card-header">Nome do Produto</div>
+          <div>Valor: <span th:text="${pedido.valorNegociado}">200,99</span></div>
+          <div>Data da Entrega: <span th:text="${pedido.dataDaEntrega}">10/10/2022</span></div>
+  
+          <div>Produto</div>
+          <div><input class="form-control" th:value="${pedido.urlProduto}" value="url imagem"></div>
+  
+          <div>Descrição</div>
+  
+          <div>
+            <textarea class="form-control">descricao do pedido</textarea>
+          </div>
+        </div>
+  
+        <div class="col-6">
+          <div>
+            <img  th:src="${pedido.urlImagem}" src="" alt="">
+          </div> 
+        </div>
       </div>
 
     </div>
