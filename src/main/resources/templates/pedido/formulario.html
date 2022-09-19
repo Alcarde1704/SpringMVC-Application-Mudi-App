@@ -18,34 +18,45 @@
       </div>
     </div>
 
-    <form action="/pedido/novo" method="POST">
+    <div class="card mt-3">
+      <form th:object="${requisicaoNovoPedido}" action="/pedido/novo" method="POST" class="card-body">
 
-      <div>
-        <label for="nomeProduto">Produto</label>
-        <input type="text" name="nomeProduto" placeholder="nome do produto">
-        <small>Informe qual o nome do produto</small>
-      </div>
+        <div class="form-group">
+          <label for="nomeProduto">Produto</label>
+          <input th:field="*{nomeProduto}" th:errorclass="is-invalid" type="text" class="form-control" placeholder="nome do produto">
+          <small>Informe qual o nome do produto</small>
+          <div class="invalid-feedback" th:errors="*{nomeProduto}">
+            Erros do nome do produto
+          </div>
+        </div>
 
-      <div>
-        <label for="urlProduto">Url</label>
-        <input type="text" name="urlProduto" placeholder="url do produto">
-        <small>Procure em um site o produto que você deseja e cole a url da página aqui</small>
-      </div>
+        <div class="form-group">
+          <label for="urlProduto">Url</label>
+          <input th:field="*{urlProduto}" th:errorclass="is-invalid" type="text" class="form-control" placeholder="url do produto">
+          <small>Procure em um site o produto que você deseja e cole a url da página aqui</small>
+          <div class="invalid-feedback" th:errors="*{urlProduto}">
+            Erros da url do produto
+          </div>
+        </div>
 
-      <div>
-        <label for="urlImagem">Imagem</label>
-        <input type="text" name="urlImagem" placeholder="url da imagem">
-        <small>Copie a url de uma boa imagem do produto e cole aqui para ajudar a conseguir compradores</small>
-      </div>
+        <div class="form-group">
+          <label for="urlImagem">Imagem</label>
+          <input th:field="*{urlImagem}" th:errorclass="is-invalid" type="text" class="form-control " placeholder="url da imagem">
+          <small>Copie a url de uma boa imagem do produto e cole aqui para ajudar a conseguir compradores</small>
+          <div class="invalid-feedback" th:errors="*{urlImagem}">
+            Erros da url da imagem
+          </div>
+        </div>
 
-      <div>
-        <label for="descricaoProduto">Descrição</label>
-        <textarea type="text" name="descricaoProduto" placeholder="Adicione detalhes importantes para ajudar o comprador"></textarea>
-      </div>
+        <div class="form-group">
+          <label for="descricaoProduto">Descrição</label>
+          <textarea th:field="*{descricao}" type="text" class="form-control" placeholder="Adicione detalhes importantes para ajudar o comprador"></textarea>
+        </div>
 
-      <button type="submit">Cadastrar</button>
+        <button class="btn btn-primary" type="submit">Cadastrar</button>
 
-    </form>
+      </form>
+    </div>
 
   </div>
 
