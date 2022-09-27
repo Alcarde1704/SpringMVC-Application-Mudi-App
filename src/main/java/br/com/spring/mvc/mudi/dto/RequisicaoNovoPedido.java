@@ -1,20 +1,24 @@
 package br.com.spring.mvc.mudi.dto;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import br.com.spring.mvc.mudi.models.Pedido;
 import br.com.spring.mvc.mudi.models.StatusPedido;
 
 public class RequisicaoNovoPedido {
   
-  @NotBlank
+  @NotBlank 
   private String nomeProduto;
 
   @NotBlank
+  @Size(min = 5, max = 255)
   private String urlProduto;
 
   @NotBlank
+  @Size(min = 5, max = 255)
   private String urlImagem;
+
   private String descricao;
 
   public String getNomeProduto() {

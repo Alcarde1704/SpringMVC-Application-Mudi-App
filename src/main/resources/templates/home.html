@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head th:replace="~{base :: head}"></head>
-<body>
+<body class="bg-secondary">
 
   <div th:replace="~{base :: logo}"></div>
   
-  <div class="container">
+  <div class="container ">
 
     <div th:replace="~{base :: titulo('Meus Pedidos')}"></div>
 
-    <nav class="navbar navbar-expand bg-light navbar-light d-flex justify-content-between mb-3">
+    <nav class="navbar navbar-expand bg-light navbar-light d-flex justify-content-between mb-3 rounded-3 p-3">
       <div class="navbar-nav">
-        <a class="nav-link active" href="">Todos</a>
-        <a class="nav-link " href="">Aguardando</a>
-        <a class="nav-link " href="">Aprovado</a>
-        <a class="nav-link " href="">Entregue</a>
+        <a th:classappend="${status} == null ? 'active'" class="nav-link " href="/home">Todos</a>
+        <a th:classappend="${status} == 'aguardando' ? 'active'" class="nav-link " href="/home/aguardando">Aguardando</a>
+        <a th:classappend="${status} == 'aprovado' ? 'active'" class="nav-link " href="/home/aprovado">Aprovado</a>
+        <a th:classappend="${status} == 'entregue' ? 'active'" class="nav-link " href="/home/entregue">Entregue</a>
       </div>
       <a href="/pedido/formulario"><button class="btn btn-outline-secondary ">Novo</button></a>
     </nav>
@@ -32,8 +32,8 @@
           <div class="col-12 col-sm-8 mb-3 ">
             
             <div class="row">
-              <div class="col-md-5">Valor: <span th:text="${pedido.valorNegociado}">200,99</span></div>
-              <div class="col-md-7">Data da Entrega: <span th:text="${pedido.dataDaEntrega}">10/10/2022</span></div>
+              <div class="col-md-5">Valor: <span th:if="${pedido.valorNegociado} != null" th:text="${'R$' + #numbers.formatDecimal(pedido.valorNegociado, 3,'POINT', 2, 'COMMA')}">200,99</span></div>
+              <div class="col-md-7">Data da Entrega: <span th:text="${#temporals.format(pedido.dataDaEntrega, 'dd/MM/yyyy')}">10/10/2022</span></div>
             </div>
     
             <div>Produto</div>
@@ -48,7 +48,7 @@
     
           <div class="col-12 col-sm-4 text-center">
             <div>
-              <img class="img-thumbnail" th:src="${pedido.urlImagem}" src="" alt="">
+              <img class="img-thumbnail img-fluid h-50 w-50" th:src="${pedido.urlImagem}" src="" alt="">
             </div> 
           </div>
         </div>
