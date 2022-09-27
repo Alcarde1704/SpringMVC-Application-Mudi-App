@@ -12,7 +12,7 @@
     <div class="card mt-3 mb-3">
       <form th:object="${requisicaoNovoPedido}" action="/pedido/novo" method="POST" class="card-body">
 
-        <div class="form-group">
+        <div class="form-group mb-4">
           <label for="nomeProduto">Produto</label>
           <input th:field="*{nomeProduto}" th:errorclass="is-invalid" type="text" class="form-control" placeholder="nome do produto">
           <small>Informe qual o nome do produto</small>
@@ -21,7 +21,7 @@
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group mb-4">
           <label for="urlProduto">Url</label>
           <input th:field="*{urlProduto}" th:errorclass="is-invalid" type="text" class="form-control" placeholder="url do produto">
           <small>Procure em um site o produto que você deseja e cole a url da página aqui</small>
@@ -30,7 +30,7 @@
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group mb-4">
           <label for="urlImagem">Imagem</label>
           <input th:field="*{urlImagem}" th:errorclass="is-invalid" type="text" class="form-control " placeholder="url da imagem">
           <small>Copie a url de uma boa imagem do produto e cole aqui para ajudar a conseguir compradores</small>
@@ -39,12 +39,12 @@
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group mb-4">
           <label for="descricaoProduto">Descrição</label>
           <textarea th:field="*{descricao}" type="text" class="form-control" placeholder="Adicione detalhes importantes para ajudar o comprador"></textarea>
         </div>
 
-        <button class="btn btn-primary mt-3" type="submit">Cadastrar</button>
+        <button class="btn btn-primary mt-3 text-center" type="submit">Cadastrar</button>
 
       </form>
     </div>
